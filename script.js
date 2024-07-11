@@ -23,8 +23,11 @@ for(let select of dropdowns) {
     select.addEventListener("change",(e)=>{
         updateFlag(e.target);
     });
-
 }
+
+window.addEventListener("load", ()=>{
+    updateExchangeRate();
+})
 
 const updateFlag =(ele)=>{
   let currCode = ele.value;
@@ -38,7 +41,13 @@ const updateFlag =(ele)=>{
 
 btn.addEventListener("click", async (evt)=>{
     evt.preventDefault();
-    let amount = document.querySelector("input")
+    updateExchangeRate();
+    
+});
+
+
+const updateExchangeRate  = async ()=>{
+let amount = document.querySelector("input")
     let amtVal =amount.value;
     console.log(amtVal);
     if(amtVal === "" || amtVal < 1){
@@ -59,7 +68,6 @@ btn.addEventListener("click", async (evt)=>{
     console.log("Rate is",rate );
 
     msg.innerText = `${amtVal} ${fromCurr.value} = ${(rate*amtVal).toFixed(2)} ${toCurr.value}`
-});
-
+}
 
 
