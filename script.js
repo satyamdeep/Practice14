@@ -4,6 +4,7 @@ const dropdowns = document.querySelectorAll(".drop-down select");
 const btn = document.querySelector("button");
 const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
+const msg = document.querySelector(".msg");
 
 
 for(let select of dropdowns) {
@@ -55,7 +56,9 @@ btn.addEventListener("click", async (evt)=>{
     console.log(fromCurr.value.toLowerCase());
     console.log(toCurr.value.toLowerCase());
     let rate = data[frm][to];
-    console.log("Rate is",rate);
+    console.log("Rate is",rate );
+
+    msg.innerText = `${amtVal} ${fromCurr.value} = ${(rate*amtVal).toFixed(2)} ${toCurr.value}`
 });
 
 
