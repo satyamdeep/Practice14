@@ -46,12 +46,17 @@ btn.addEventListener("click", async (evt)=>{
     }
     console.log(fromCurr.value, toCurr.value);
     const URL = `${Base_Url}/${fromCurr.value.toLowerCase()}.json`;
+    console.log(URL);
     let res = await fetch(URL);
     let data = await res.json();
-    // console.log(toCurr.value.toLowerCase());
-    let rate = data.toCurr.value.toLowerCase();
-    console.log(rate);
-})
+    let frm = fromCurr.value.toLowerCase();
+    let to = toCurr.value.toLowerCase();
+    
+    console.log(fromCurr.value.toLowerCase());
+    console.log(toCurr.value.toLowerCase());
+    let rate = data[frm][to];
+    console.log("Rate is",rate);
+});
 
 
 
